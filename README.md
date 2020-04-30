@@ -2,17 +2,25 @@
 **Generating YAML definitions:**
 
 Create an NGINX Pod
-`kubectl run nginx --image=nginx`
-`kubectl run --generator=run-pod/v1 nginx --image=nginx` (deprecated)
+```
+kubectl run nginx --image=nginx
+kubectl run --generator=run-pod/v1 nginx --image=nginx (deprecated)
+```
 
 Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
-`kubectl run  nginx --image=nginx --dry-run=client -o yaml`
+```
+kubectl run  nginx --image=nginx --dry-run=client -o yaml
+```
 
 Create a deployment
-`kubectl create deployment --image=nginx nginx`
+```
+kubectl create deployment --image=nginx nginx
+```
 
 Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
-`kubectl create deployment --image=nginx nginx --dry-run=client -o yaml`
+```
+kubectl create deployment --image=nginx nginx --dry-run=client -o yaml
+```
 
 <br/><br/>
 * * *
@@ -32,10 +40,15 @@ We can first generate the POD definition file
 `kubectl create -f redis.yml`
 
 To edit the pod:
-`kubectl edit pods redis` ( Note this will not make the changes in the pod definition file created previously)
+```
+kubectl edit pods redis ( Note this will not make the changes in the pod definition file created previously)
+```
 (OR)
+
 Edit the POD definition file and then run,
-`kubectl apply -f redis.yml`
+```
+kubectl apply -f redis.yml
+```
 
 <br/><br/>
 * * *
@@ -58,11 +71,15 @@ To limit resources in NameSpace, we need to create `ResourceQuota`
 
 Examples:
   #### Create a new resourcequota named my-quota
-  `kubectl create quota my-quota
---hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10`
+  ```
+kubectl create quota my-quota
+--hard=cpu=1,memory=1G,pods=2,services=3,replicationcontrollers=2,resourcequotas=1,secrets=5,persistentvolumeclaims=10
+```
   
   #### Create a new resourcequota named best-effort
-  `kubectl create quota best-effort --hard=pods=100 --scopes=BestEffort`
+  ```
+kubectl create quota best-effort --hard=pods=100 --scopes=BestEffort
+```
 
 <br/><br/>
 * * *
